@@ -34,10 +34,11 @@ int swapPancakes(const int &l, const int &r)
     return 0;
 }
 
-int flip(const int &initPos, const int &maxPos, const int &printablePos)
+int flip(const int &initPos, const int &maxPos)
 {
     int lPointer = 1;
     int rPointer;
+    int printablePos;
 
     if (maxPos == 1)
     {
@@ -47,6 +48,8 @@ int flip(const int &initPos, const int &maxPos, const int &printablePos)
     {
         rPointer = maxPos;
     }
+
+    printablePos = pancakesNumber - rPointer + 1;
 
     cout << printablePos << " ";
 
@@ -85,7 +88,7 @@ int flipPancakes()
             continue;
         }
 
-        flip(revPos, maxPos, i);
+        flip(revPos, maxPos);
     }
     
     cout << "0" << endl;
@@ -96,11 +99,12 @@ int flipPancakes()
 int main(int argc, char *argv[])
 {
     string line;
-    int first = 1;
 
     while (getline(cin, line))
     {
         readPancakes(line);
         flipPancakes();     
     }
+
+    return 0;
 }
